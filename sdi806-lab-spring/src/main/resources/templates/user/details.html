@@ -8,18 +8,18 @@
 
 
 	<div class="container">
-		<h2>Detalles del Usuario</h2>
+		<h2 th:text="#{user.details}">Detalles del Usuario</h2>
 		<div class="panel panel-default">
-			<div class="panel-heading">Dni</div>
+			<div class="panel-heading" th:text="#{dni}">Dni</div>
 			<div class="panel-body" th:text="${user.dni}"></div>
 
 		</div>
 		<div class="panel panel-default">
-			<div class="panel-heading">Nombre</div>
+			<div class="panel-heading" th:text="#{name}">Nombre</div>
 			<div class="panel-body" th:text="${user.name}">28276</div>
 		</div>
 		<div class="panel panel-default">
-			<div class="panel-heading">Password</div>
+			<div class="panel-heading" th:text="#{psword}">Password</div>
 			<div class="panel-body" th:text="${user.lastName}"></div>
 
 		</div>
