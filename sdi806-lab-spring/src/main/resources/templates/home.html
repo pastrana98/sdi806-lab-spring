@@ -7,8 +7,8 @@
 		<h2 th:text="#{welcome.message}"></h2>
 		<h3 th:text="#{home.privateZone}" ></h3>
 		<p th:text="#{home.user.authentication}">
-			 <b th:inline="text">
-				[[${#httpServletRequest.remoteUser}]] </b>
+			 <span sec:authentication="principal.username"
+ th:inline="text"> [[${#httpServletRequest.remoteUser}]] </span>
 		</p>
 		<p th:text="#{home.user.marks}"></p>
 		<div class="table-responsive">

@@ -10,23 +10,27 @@
 			<img src="/img/student-48.png" alt="logo" />
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li><a href="/" th:text="#{home}"></a></li>
+			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+				<li><a href="/home" th:text="#{home}"></a></li>
 				<li id="marks-menu" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#" th:text="#{manage.marks}">  <span
+					data-toggle="dropdown" href="#" th:text="#{manage.marks}"> <span
 						class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/mark/add" th:text="#{add.marks}" ></a></li>
+						<li sec:authorize="hasRole('ROLE_PROFESSOR')"><a
+							href="/mark/add" th:text="#{add.marks}"></a></li>
 						<li><a href="/mark/list" th:text="#{list.marks}"></a></li>
 					</ul></li>
 				<li id="users-menu" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#" th:text="#{manage.users}">  <span
-						class="caret"></span>
+					data-toggle="dropdown" href="#"
+					sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{manage.users}">
+						<span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/user/add" th:text="#{add.users}">Agregar usuario</a></li>
-						<li><a href="/user/list" th:text="#{list.users}">Ver Usuarios</a></li>
+						<li><a href="/user/add" th:text="#{add.users}">Agregar
+								usuario</a></li>
+						<li><a href="/user/list" th:text="#{list.users}">Ver
+								Usuarios</a></li>
 					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -47,11 +51,16 @@
 								th:text="#{language.es}">Español</span>
 						</a></li>
 					</ul></li>
-				<li><a href="/signup" th:text="#{signup.message}"> <span
+				<li sec:authorize="!isAuthenticated()"><a href="/signup"
+					th:text="#{signup.message}"> <span
 						class="glyphicon glyphicon-user"></span> Registrate
 				</a></li>
-				<li><a href="/login" th:text="#{login.message}"> <span
+				<li sec:authorize="!isAuthenticated()"><a href="/login"
+					th:text="#{login.message}"> <span
 						class="glyphicon glyphicon-log-in"></span> Identifícate
+				</a></li>
+				<li sec:authorize="isAuthenticated()"><a href="/logout"> <span
+						class="glyphicon glyphicon-log-out"></span> Desconectar
 				</a></li>
 			</ul>
 		</div>
