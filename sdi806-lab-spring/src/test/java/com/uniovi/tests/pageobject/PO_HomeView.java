@@ -1,10 +1,6 @@
 package com.uniovi.tests.pageobject;
 
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import com.uniovi.utils.SeleniumUtils;
 
 public class PO_HomeView extends PO_View{
